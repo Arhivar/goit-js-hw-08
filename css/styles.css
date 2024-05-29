@@ -1,0 +1,21 @@
+a {
+    text-decoration: none;
+}
+
+.gallery-item{
+   list-style-type: none;  
+  }
+.gallery{
+display: flex;
+flex-wrap: wrap;
+gap: 24px;
+padding-left: 156px;
+padding-top: 24px;
+}
+.gallery-image{
+    width: 360px;
+    height: 200px;
+}
+.gallery-link:hover{
+    cursor: url("/Vector.png"),auto;
+}
