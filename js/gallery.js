@@ -67,13 +67,6 @@ const images = [
 const gallery = document.querySelector(".gallery");
 gallery.addEventListener("click", handleClick);
 
-function handleClick(event) {
-  if (event.target === event.currentTarget) {
-    return;
-  }
-  console.log("hi");
-}
-
 function createGallery(array) {
   return array
     .map(
@@ -90,5 +83,26 @@ function createGallery(array) {
     )
     .join("");
 }
-
+// image.original === id
 gallery.insertAdjacentHTML("beforeend", createGallery(images));
+
+function handleClick(event) {
+  if (event.target === event.currentTarget) {
+    return;
+  }
+  const currentImage = event.target.closest(".gallery-image");
+
+  const id = currentImage.dataset.source;
+  console.log(id);
+  const image = images.find((image) => image.original === id);
+
+  const instance = basicLightbox.create(`
+  	<h1>Dynamic Content</h1>
+  	<img
+          class="gallery-modal"
+          src="${image.original}"
+          alt="${image.description}"
+        />
+  `);
+  instance.show();
+}
